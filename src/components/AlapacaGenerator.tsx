@@ -1,12 +1,13 @@
 import React from 'react'
+import { Alpacas } from '../types'
 import { AlpacaCustomization } from './AlpacaCustomization'
 import { AlpacaImage } from './AlpacaImage'
 
-export const AlapacaGenerator = () => {
+export const AlapacaGenerator = ({alpacas}: {alpacas: Alpacas[]}) => {
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-8">
             <div className="w-1/2">
-                <AlpacaImage />
+                <AlpacaImage alpacas={alpacas}/>
             </div>
             <div className="w-1/2">
                 <AlpacaCustomization />
