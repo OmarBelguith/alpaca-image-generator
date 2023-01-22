@@ -9,7 +9,11 @@ jobs:
 
     steps:
     - name: Screenshot Website
-      uses: JonathanTreffler/full-website-screenshot-action@v1.0
+      uses: AlexRogalskiy/github-action-screenshots@2.0.1
       with:
+        # screenshot source url
         url: https://alpaca-image-generator-sigma.vercel.app
-        destination: ./screenshot.png
+        # screenshot name
+        name: project-screenshot.png
+        # screenshot path
+        path: public
