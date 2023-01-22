@@ -1,0 +1,9 @@
+- name: Screenshot Action
+  # You may pin to the exact commit or the version.
+  # uses: JonathanTreffler/full-website-screenshot-action@35d9ee87162e48100321887e37e39fec6e2944e6
+  uses: JonathanTreffler/full-website-screenshot-action@v1.0
+  with:
+    # The URL of the site, that should get captured
+    url: https://alpaca-image-generator-sigma.vercel.app
+    # Where to save the screenshot
+    destination: public/project-screenshot.png
