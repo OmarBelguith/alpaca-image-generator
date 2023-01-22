@@ -12,4 +12,4 @@ jobs:
       uses: swinton/screenshot-website@v1.x
       with:
         source: https://alpaca-image-generator-sigma.vercel.app
-        destination: screenshot.png
+        destination: ./screenshot.png
