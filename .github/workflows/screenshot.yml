@@ -1,9 +1,7 @@
 name: Website Screenshot
 
-on:
-  push:
-    branches:
-      - main
+on: [deployment_status]
+
 
 jobs:
   screenshot:
