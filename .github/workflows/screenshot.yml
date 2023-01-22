@@ -1,0 +1,15 @@
+name: "screenshot automation"
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: screenshot Automation
+    - uses: JonathanTreffler/full-website-screenshot-action@v1.0
+      with:
+        url: https://alpaca-image-generator-sigma.vercel.app
+        destination: ./public/project-screenshot.png
