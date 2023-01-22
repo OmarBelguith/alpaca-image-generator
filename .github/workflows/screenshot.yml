@@ -8,20 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+    - name: Screenshot Website
+      uses: swinton/screenshot-website@v1.x
       with:
-        node-version: 16
-    - name: Take Screenshot
-      run: |
-        npm install puppeteer
-        node script.js ${{ secrets.URL }} ${{ secrets.FOLDER_NAME }}
-    - name: Deploy Screenshot
-      run: |
-        git config --local user.email "github-actions@github.com"
-        git config --local user.name "GitHub Actions"
-        git add .
-        git commit -m "Add Screenshot"
-        git push origin HEAD:main
+        source: https://alpaca-image-generator-sigma.vercel.app
+        destination: screenshot.png
