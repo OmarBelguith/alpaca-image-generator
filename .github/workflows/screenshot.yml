@@ -9,9 +9,6 @@ jobs:
 
     steps:
       - name: Checkout
-        with:
-            ref: gh-pages
-
         uses: actions/checkout@v3
       - name: Create Screenshot
         uses: alexrogalskiy/github-action-screenshots@master
