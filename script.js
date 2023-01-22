@@ -1,5 +1,6 @@
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
 
+// take screenshot of the website
 (async () => {
   const browser = await puppeteer.launch({
     headless: true,
