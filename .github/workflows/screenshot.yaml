@@ -1,0 +1,27 @@
+
+on:
+  deployment:
+    types: [deployment]
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Take Screenshot
+      run: |
+        apt-get update
+        apt-get install -y libgconf-2-4
+        apt-get install -y chromium-browser
+        npm install -g puppeteer
+        node script.js ${{ secrets.URL }} ${{ secrets.FOLDER_NAME }}
+    - name: Deploy Screenshot
+      run: |
+        git config --local user.email "github-actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add .
+        git commit -m "Add Screenshot"
+        git push
