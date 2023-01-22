@@ -8,12 +8,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Screenshot Website
-      uses: AlexRogalskiy/github-action-screenshots@2.0.1
-      with:
-        # screenshot source url
-        url: https://alpaca-image-generator-sigma.vercel.app
-        # screenshot name
-        name: project-screenshot.png
-        # screenshot path
-        path: public
+      - name: Checkout
+        with:
+            ref: gh-pages
+
+        uses: actions/checkout@v3
+      - name: Create Screenshot
+        uses: alexrogalskiy/github-action-screenshots@master
+        with:
+          url: "https://alpaca-image-generator-sigma.vercel.app"
+          name: 'project-screenshot'
+          path: 'public'
+          width: 1280
+          height: 720
+          
+      - name: Commit
+        run: |
+          git config --local user.email 'github-actions@github.com'
+          git config --local user.name 'GitHub Action'
+          git add --all
+          git commit -m 'Update Preview'
+          git push
