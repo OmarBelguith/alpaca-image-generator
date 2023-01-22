@@ -16,7 +16,7 @@ jobs:
         node-version: 16
     - name: Take Screenshot
       run: |
-        npm install -g puppeteer
+        npm install puppeteer
         node script.js ${{ secrets.URL }} ${{ secrets.FOLDER_NAME }}
     - name: Deploy Screenshot
       run: |
