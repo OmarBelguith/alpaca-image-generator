@@ -1,14 +1,13 @@
 import { useState } from 'react'
-import './App.css'
 import { AlapacaGenerator } from './components/AlapacaGenerator'
 import { alpacas } from './data/alpacas'
 
 function App() {
-  const [apacas, setAlpacas] = useState(alpacas);
+  const [alpacasState, setAlpacas] = useState(alpacas);
 
   // This function will take the directory (Part: e.g. Background, Eyes...) we want to customize
   const handleSelectDir = (dirname: string) => {
-    const newAlpacas = alpacas.map((dir) => {
+    const newAlpacas = alpacasState.map((dir) => {
       if (dir.directory === dirname) {
         return {
           ...dir,
@@ -24,9 +23,9 @@ function App() {
   }
 
   // This function will take which item (e.g. Blue, Green, Red...) we want to select for the directory
-  const handleSelectItem = (dirname: string, filename: string) => {
-    const newAlpacas = alpacas.map((dir) => {
-      if (dir.directory === dirname) {
+  const handleSelectItem = (filename: string) => {
+    const newAlpacas = alpacasState.map((dir) => {
+      if (dir.selected) {
         return {
           ...dir,
           items: dir.items.map((item) => {
@@ -50,7 +49,7 @@ function App() {
 
   // This function will create a random alpaca out of the alpacas array
   const handleRandomAlpaca = () => {
-    const newAlpacas = alpacas.map((dir) => {
+    const newAlpacas = alpacasState.map((dir) => {
       const randomIndex = Math.floor(Math.random() * dir.items.length);
       return {
         ...dir,
@@ -111,7 +110,7 @@ function App() {
     <div className="h-screen">
       <div className="container mx-auto p-8 space-y-8">
         <h1 className="text-left text-6xl text-blue-900 uppercase font-semibold">Alpaca Generator</h1>
-        <AlapacaGenerator alpacas={alpacas}/>
+        <AlapacaGenerator alpacas={alpacasState} onSelectDir={handleSelectDir} onSelectItem={handleSelectItem} onRandomizeAlpaca={handleRandomAlpaca} onDownloadAlpaca={handleDownload}/>
       </div>
     </div>
   )

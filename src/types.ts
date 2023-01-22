@@ -6,7 +6,7 @@ export type Alpacas = {
     items: Array<AlpacaItem>;
 }
 
-type AlpacaItem = {
+export type AlpacaItem = {
     id: Number;
     label: string;
     filename: string;

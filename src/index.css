@@ -8,3 +8,39 @@ body {
     line-height: 1.5;
     @apply bg-gray-300;
 }
+
+.alpaca-accessories {
+    z-index: 10;
+}
+
+.alpaca-backgrounds {
+    z-index: -1;
+}
+
+.alpaca-ears {
+    z-index: 1;
+}
+
+.alpaca-eyes {
+    z-index: 10;
+}
+
+.alpaca-hair {
+    z-index: 1;
+}
+
+.alpaca-leg {
+    z-index: 1;
+}
+
+.alpaca-mouth {
+    z-index: 2;
+}
+
+.alpaca-neck {
+    z-index: 1;
+}
+
+.alpaca-nose {
+    z-index: 1;
+}
