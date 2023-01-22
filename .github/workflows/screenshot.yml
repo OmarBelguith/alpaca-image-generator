@@ -1,7 +1,9 @@
+name: Website Screenshot
 
 on:
-  deployment:
-    types: [deployment]
+  push:
+    branches:
+      - main
 
 jobs:
   screenshot:
@@ -10,7 +12,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
+    - name: check the Deployment status
+      run: |
+        if [ "${{ github.event.deployment_status.state }}" != "success" ]; then
+          echo "Not a successful Deployment"
+          exit 1
+        fi
     - name: Take Screenshot
       run: |
         apt-get update
