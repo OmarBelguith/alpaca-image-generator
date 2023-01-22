@@ -1,15 +1,27 @@
-name: "screenshot automation"
+
 on:
-  push:
-    branches:
-      - master
+  deployment:
+    types: [deployment]
 
 jobs:
-  test:
+  screenshot:
     runs-on: ubuntu-latest
+
     steps:
-    - name: screenshot Automation
-    - uses: JonathanTreffler/full-website-screenshot-action@v1.0
-      with:
-        url: https://alpaca-image-generator-sigma.vercel.app
-        destination: ./public/project-screenshot.png
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Take Screenshot
+      run: |
+        apt-get update
+        apt-get install -y libgconf-2-4
+        apt-get install -y chromium-browser
+        npm install -g puppeteer
+        node script.js ${{ secrets.URL }} ${{ secrets.FOLDER_NAME }}
+    - name: Deploy Screenshot
+      run: |
+        git config --local user.email "github-actions@github.com"
+        git config --local user.name "GitHub Actions"
+        git add .
+        git commit -m "Add Screenshot"
+        git push
