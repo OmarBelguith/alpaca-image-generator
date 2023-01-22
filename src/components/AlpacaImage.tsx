@@ -2,7 +2,7 @@ import { Alpacas } from '../types'
 
 export const AlpacaImage = ({alpacas}: {alpacas: Alpacas[]}) => {
   return (
-        <div className="max-w-md relative aspect-square shadow border-2 border-dotted" id="alpaca">
+        <div className="w-full relative aspect-square shadow border-2 border-dotted" id="alpaca">
           {alpacas.map((dir, index) => {
             const item = dir.items.find((item) => item.selected);
             if (!item) return null;

@@ -17,7 +17,7 @@ export const AlpacaCustomization = ({ alpacas, onSelectDir, onSelectItem }: Alpa
 
   return (
     <>
-    <div className='space-y-6'>
+    <div className='space-y-8'>
       <h2 className="text-left text-xl text-black uppercase font-semibold">Accessorize your Alpaca</h2>
       <div className="flex flex-wrap gap-8">
         {

@@ -1,7 +1,23 @@
 import React from 'react'
 
-export const Controls = () => {
+type ControlsProps = {
+  onRandomizeAlpaca: () => void;
+  onDownloadAlpaca: () => void;
+}
+
+export const Controls = ({onRandomizeAlpaca, onDownloadAlpaca}: ControlsProps) => {
   return (
-    <div>Controls</div>
+    <div className="flex justify-between">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full"
+        onClick={onRandomizeAlpaca}
+      >
+        🔀 Randomize
+      </button>
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full"
+        onClick={onDownloadAlpaca}
+      >
+        🔽 Download
+      </button>
+    </div>
   )
 }

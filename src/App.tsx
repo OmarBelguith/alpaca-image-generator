@@ -1,6 +1,8 @@
+import { toPng } from 'html-to-image';
 import { useState } from 'react'
 import { AlapacaGenerator } from './components/AlapacaGenerator'
 import { alpacas } from './data/alpacas'
+import download from "downloadjs";
 
 function App() {
   const [alpacasState, setAlpacas] = useState(alpacas);
@@ -70,40 +72,17 @@ function App() {
     setAlpacas(newAlpacas);
   }
 
-  // This function will download the final alpaca image
+  // This function will trigger the of the generated alpaca image to the user
   const handleDownload = () => {
-    const alpaca = document.getElementById("alpaca");
-    if (alpaca) {
-      const canvas = document.createElement("canvas");
-      canvas.width = 500;
-      canvas.height = 500;
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        const data = (alpaca as HTMLDivElement).innerHTML;
-        const DOMURL = window.URL || window.webkitURL || window;
-        const img = new Image();
-        const svg = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
-        const url = DOMURL.createObjectURL(svg);
-        img.onload = function () {
-          ctx.drawImage(img, 0, 0);
-          DOMURL.revokeObjectURL(url);
-          const imgURI = canvas
-            .toDataURL("image/png")
-            .replace("image/png", "image/octet-stream");
-          const evt = new MouseEvent("click", {
-            view: window,
-            bubbles: false,
-            cancelable: true,
-          });
-          const a = document.createElement("a");
-          a.setAttribute("download", "alpaca.png");
-          a.setAttribute("href", imgURI);
-          a.setAttribute("target", "_blank");
-          a.dispatchEvent(evt);
-        };
-        img.src = url;
-      }
-    }
+    const node = document.getElementById('alpaca');
+    if (!node) return;
+    toPng(node)
+      .then((dataUrl) => {
+        download(dataUrl, 'alpaca.png');
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
   
   return (
