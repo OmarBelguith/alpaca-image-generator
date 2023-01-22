@@ -25,4 +25,4 @@ jobs:
           git config --local user.name 'GitHub Action'
           git add --all
           git commit -m 'Update Preview'
-          git push
+          git push origin HEAD:main
