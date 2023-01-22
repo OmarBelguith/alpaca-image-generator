@@ -24,4 +24,4 @@ jobs:
         git config --local user.name "GitHub Actions"
         git add .
         git commit -m "Add Screenshot"
-        git push
+        git push origin HEAD:main
