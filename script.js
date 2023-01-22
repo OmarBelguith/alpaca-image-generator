@@ -7,9 +7,8 @@ import puppeteer from 'puppeteer';
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
   const page = await browser.newPage();
-  await page.goto(process.argv[2]);
+  await page.goto(process.argv[2], {waitUntil: 'load'});
   // we need to wait for the page to load
-  await page.watiForSelector('.alpaca-nose');
   await page.screenshot({path: process.argv[3] + '/project-screenshot.png'});
   await browser.close();
 })();
